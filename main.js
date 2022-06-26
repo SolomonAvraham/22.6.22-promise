@@ -102,3 +102,59 @@ async function targilTwo() {
     loadingTwo.innerHTML = " ";
   }
 }
+
+async function targilThree() {
+  btn7.disabled = true;
+  loadingThree.innerHTML = "<img src='LoadingGIF.gif' >";
+
+  try {
+    await fetch("https://placekeanu.com/200/150 ").then((data) => {
+      console.log(data);
+    });
+  } catch (error) {
+    alert("EROOR!");
+  } finally {
+    btn7.disabled = false;
+    loadingThree.innerHTML = " ";
+  }
+}
+
+async function targilFour() {
+  btn8.disabled = true;
+  loadingFour.innerHTML = "<img src='LoadingGIF.gif' >";
+  try {
+    await fetch("https://api.jikan.moe/v4/anime ").then((result) => {
+      console.log(result.data);
+    });
+  } catch (error) {
+    alert("ERROR!");
+  } finally {
+    btn8.disabled = false;
+    loadingFour.innerHTML = "";
+  }
+}
+
+async function getData() {
+  try {
+    return await fetch("https://moviesmern.herokuapp.com/movies/all").then(
+      (response) => {
+        return response.json();
+      }
+    );
+  } catch (error) {
+  } finally {
+  }
+}
+
+function printToSreen() {
+  getData()
+    .then((res) => {
+    
+      res.data.forEach((item) => {
+        printTo.innerHTML += `<li>${item.movieName}<li>`;
+        printTo.innerHTML += `<img src=${item.image} >`;
+
+      });
+  })
+  
+}
