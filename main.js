@@ -134,27 +134,3 @@ async function targilFour() {
   }
 }
 
-async function getData() {
-  try {
-    return await fetch("https://moviesmern.herokuapp.com/movies/all").then(
-      (response) => {
-        return response.json();
-      }
-    );
-  } catch (error) {
-  } finally {
-  }
-}
-
-function printToSreen() {
-  getData()
-    .then((res) => {
-    
-      res.data.forEach((item) => {
-        printTo.innerHTML += `<li>${item.movieName}<li>`;
-        printTo.innerHTML += `<img src=${item.image} >`;
-
-      });
-  })
-  
-}
